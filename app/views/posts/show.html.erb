@@ -1,0 +1,19 @@
+<%= @post.title %><br>
+
+<%if @prev_post!=nil %>
+	<p align = "left"><%= link_to  'Previous', @prev_post %><p>
+<% end %>
+<%if @next_post!=nil %>
+	<p align="right"><%= link_to  'Next', @next_post %></p><br>
+<% end %>
+
+<%= @post.content.html_safe %><br>
+
+<br> <br>
+
+<%= link_to "Edit Article", edit_post_path(@post) %>
+<%= link_to "Delete Article", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%= link_to "All Articles", posts_path %>
+
+<%= render 'disqus' %>
