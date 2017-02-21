@@ -9,6 +9,15 @@
   </head>
 
   <body>
+  <ul class="nav navbar-nav">
+  <% if current_user %>
+  <li><%= link_to 'Log Out', '/logout' %></li>
+  
+  <% else %>
+  <li><%= link_to 'FB', '/auth/facebook' %></li>
+  
+  <% end %>
+</ul>
     <%= yield %>
   </body>
 </html>
