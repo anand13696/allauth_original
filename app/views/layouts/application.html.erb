@@ -6,6 +6,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
   </head>
 
   <body>
@@ -14,26 +17,45 @@
     <% unless flash.empty? %>
      <script type="text/javascript">
           <% flash.each do |f| %>
-        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-         toastr['<%= type %>']('<%= f[1] %>');
-     <% end %>
+            <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+            toastr['<%= type %>']('<%= f[1] %>');
+         <% end %>
      </script>
-<% end %>
+    <% end %>
 <!--  -->
 
 
-  <ul>
-  <% if current_user %>
-  <li><%= link_to 'Log Out', '/logout' %></li>
-  <li><%= image_tag(current_user.avatar, size: '50x50') %>&nbsp;&nbsp;
-  <%= current_user.name %></li>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/posts">Blog <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/forums">Forum <span class="sr-only">(current)</span></a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><%= image_tag(current_user.avatar, size: '50x50') %></li>
+            <li><%= current_user.name %></li>
+            <li><%= link_to 'Log Out', '/logout' %></li>
   
-  <% else %>
-  <li><%= link_to 'FB', '/auth/facebook' %></li>
-  <li><%= link_to 'Google+', '/auth/google' %></li>
+          <% else %>
+            <li><%= link_to 'Facebook', '/auth/facebook' %></li>
+            <li><%= link_to 'Google+', '/auth/google' %></li>
   
-  <% end %>
-</ul>
+          <% end %>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
     <%= yield %>
   </body>
+
+  <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </html>

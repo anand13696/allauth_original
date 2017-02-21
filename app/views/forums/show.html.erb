@@ -1,25 +1,33 @@
-<%= @forum.title %><br>
+<h2 align = "center"><%= @forum.title %><br></h2>
 
-<%if @prev_forum!=nil %>
-	<p align = "left"><%= link_to  'Previous', @prev_forum %><p>
-<% end %>
-<%if @next_forum!=nil %>
-	<p align="right"><%= link_to  'Next', @next_forum %></p><br>
-<% end %>
+<nav aria-label="...">
+  <ul class="pager">
+    <li>
+    	<%if @prev_forum!=nil %>
+			<%= link_to 'Previous', @prev_forum %><p>
+		<% end %>
+	</li>
+    <li>
+    	<%if @next_forum!=nil %>
+			<%= link_to  'Next', @next_forum %></p><br>
+		<% end %>
+    </li>
+  </ul>
+</nav>
 
-<p>
+<p align = "center">
   Tags:
   <% @forum.tags.each do |tag| %>
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
 </p>
 
-
-<%= @forum.content.html_safe %><br>
-
-<br> <br>
-
-<%= link_to "Edit Forum", edit_forum_path(@forum) %>
-<%= link_to "Delete Forum", forum_path(@forum), method: :delete, data: { confirm: "Are you sure?" } %>
+<p align = "center">
+<%= link_to "Edit", edit_forum_path(@forum) %>&nbsp;
+<%= link_to "Delete", forum_path(@forum), method: :delete, data: { confirm: "Are you sure?" } %>&nbsp;
 
 <%= link_to "All Forums", forums_path %>
+</p>
+
+
+<%= @forum.content.html_safe %><br>

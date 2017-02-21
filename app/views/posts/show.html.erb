@@ -1,11 +1,21 @@
 <%= @post.title %><br>
 
-<%if @prev_post!=nil %>
-	<p align = "left"><%= link_to  'Previous', @prev_post %><p>
-<% end %>
-<%if @next_post!=nil %>
-	<p align="right"><%= link_to  'Next', @next_post %></p><br>
-<% end %>
+
+<nav aria-label="...">
+  <ul class="pager">
+    <li>
+    	<%if @prev_post!=nil %>
+			<%= link_to  'Previous', @prev_post %><p>
+		<% end %>
+	</li>
+    <li>
+    	<%if @next_post!=nil %>
+			<%= link_to  'Next', @next_post %></p><br>
+		<% end %>
+
+    </li>
+  </ul>
+</nav>
 
 <p>
   Tags:

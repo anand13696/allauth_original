@@ -25,6 +25,10 @@ class ForumsController < ApplicationController
 	end
 
 	def show
+		@forum = Forum.friendly.find(params[:id])
+
+		@prev_forum = @forum.previous
+		@next_forum = @forum.next
 	end
 
 	def edit

@@ -12,6 +12,14 @@ class Forum < ApplicationRecord
 		where("title LIKE ?", "%#{search}%")
 	end
 
+	# for prev and next button
+ 	def next
+    	self.class.where("id > ?", id).first
+  	end
+  	def previous
+    	self.class.where("id < ?", id).last
+  	end
+
 	# for tags
   	def tag_list
   		self.tags.collect do |tag|

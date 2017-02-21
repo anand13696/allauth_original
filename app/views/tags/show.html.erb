@@ -1,13 +1,9 @@
 <h1>Articles Tagged with <%= @tag.name %></h1>
 
+<p align="left">
 <ul>
   <% @tag.posts.each do |post| %>
     <li><%= link_to post.title, post_path(post) %></li>
-  <% end %>
-
-  <h1> Number of posts with all tags </h1>
-  <% Tag.all.each do |tag| %>
-  	<li><%= tag.name %>  <%= tag.posts.count %></li>
   <% end %>
 
   <h1>Forum Tagged with <%= @tag.name %></h1>
@@ -15,9 +11,25 @@
     <li><%= link_to forum.title, forum_path(forum) %></li>
   <% end %>
 
+</ul>
+</p>
+
+<ul>
+  <h1> Number of posts with all tags </h1>
+  <% Tag.all.each do |tag| %>
+  	<% if tag.posts.count  > 0 %>
+  		<li><%= link_to tag.name, tag_path(tag) %><span class="badge"><%= tag.posts.count %></span></li>
+  		<% end %>
+  <% end %>
+
   <h1> Number of forums with all tags </h1>
   <% Tag.all.each do |tag| %>
-  	<li><%= tag.name %>  <%= tag.forums.count %></li>
+  	<% if tag.forums.count  > 0 %>
+  	<li><%= link_to tag.name, tag_path(tag) %><span class="badge"><%= tag.forums.count %></span></li>
+  	<% end %>
   <% end %>
 
 </ul>
+
+
+
