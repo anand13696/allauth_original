@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+has_many :posts
 class << self
 	$found_or_created=0;
 	def create_with_omniauth(auth)
