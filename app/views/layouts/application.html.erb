@@ -9,7 +9,20 @@
   </head>
 
   <body>
-  <ul class="nav navbar-nav">
+
+  <!-- for flash messages -->
+    <% unless flash.empty? %>
+     <script type="text/javascript">
+          <% flash.each do |f| %>
+        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+         toastr['<%= type %>']('<%= f[1] %>');
+     <% end %>
+     </script>
+<% end %>
+<!--  -->
+
+
+  <ul>
   <% if current_user %>
   <li><%= link_to 'Log Out', '/logout' %></li>
   <li><%= image_tag(current_user.avatar, size: '50x50') %>&nbsp;&nbsp;

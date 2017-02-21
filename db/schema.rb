@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221071525) do
+ActiveRecord::Schema.define(version: 20170221091128) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -61,8 +61,11 @@ ActiveRecord::Schema.define(version: 20170221071525) do
     t.string   "provider"
     t.string   "avatar"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "superadmin_role", default: false
+    t.boolean  "supervisor_role", default: false
+    t.boolean  "user_role",       default: true
   end
 
 end

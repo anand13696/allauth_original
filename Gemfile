@@ -22,6 +22,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 gem 'toastr-rails'
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+gem 'cancancan'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
