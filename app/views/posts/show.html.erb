@@ -7,6 +7,13 @@
 	<p align="right"><%= link_to  'Next', @next_post %></p><br>
 <% end %>
 
+<p>
+  Tags:
+  <% @post.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
+
 <%= @post.content.html_safe %><br>
 
 <br> <br>

@@ -25,7 +25,7 @@ gem 'toastr-rails'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'cancancan'
-gem 'commontator', '~> 4.11.1'
+# gem 'commontator', '~> 4.11.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri

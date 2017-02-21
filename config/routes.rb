@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   resources :users, only: [:edit, :update]
+  resources :tags
 
 end

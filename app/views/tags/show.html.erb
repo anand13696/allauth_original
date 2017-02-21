@@ -1,0 +1,12 @@
+<h1>Articles Tagged with <%= @tag.name %></h1>
+
+<ul>
+  <% @tag.posts.each do |post| %>
+    <li><%= link_to post.title, post_path(post) %></li>
+  <% end %>
+
+  <% Tag.all.each do |tag| %>
+  	<li><%= tag.name %>  <%= tag.posts.count %></li>
+  <% end %>
+
+</ul>
