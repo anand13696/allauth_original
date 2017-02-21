@@ -12,9 +12,12 @@
   <ul class="nav navbar-nav">
   <% if current_user %>
   <li><%= link_to 'Log Out', '/logout' %></li>
+  <li><%= image_tag(current_user.avatar, size: '50x50') %>&nbsp;&nbsp;
+  <%= current_user.name %></li>
   
   <% else %>
   <li><%= link_to 'FB', '/auth/facebook' %></li>
+  <li><%= link_to 'Google+', '/auth/google' %></li>
   
   <% end %>
 </ul>
