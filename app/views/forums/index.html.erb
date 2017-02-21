@@ -8,6 +8,7 @@
 
 <% @forums.each do |forum| %>
 			<h3><a href="#"><%= link_to forum.title, forum %></a></h3>
+			<h6>Created by <%= User.find(forum.user_id).name %></h6>
 			<p class="date"><%= forum.created_at.strftime("%A, %b %d") %></p>
 <% end %>
 
