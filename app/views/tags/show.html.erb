@@ -5,8 +5,19 @@
     <li><%= link_to post.title, post_path(post) %></li>
   <% end %>
 
+  <h1> Number of posts with all tags </h1>
   <% Tag.all.each do |tag| %>
   	<li><%= tag.name %>  <%= tag.posts.count %></li>
+  <% end %>
+
+  <h1>Forum Tagged with <%= @tag.name %></h1>
+  <% @tag.forums.each do |forum| %>
+    <li><%= link_to forum.title, forum_path(forum) %></li>
+  <% end %>
+
+  <h1> Number of forums with all tags </h1>
+  <% Tag.all.each do |tag| %>
+  	<li><%= tag.name %>  <%= tag.forums.count %></li>
   <% end %>
 
 </ul>

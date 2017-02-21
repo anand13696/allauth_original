@@ -8,17 +8,20 @@
 		</ul>
 	<% end %>
 
+	<p>
 	<%= f.label :title %><br>
 	<%= f.text_field :title %>
+	</p>
 
-	<br>
-	<br>
-
+	<p>
 	<%= f.label :content, "Write your article here" %><br>
 	<%= f.cktext_area :content %>
+	</p>
 
-	<br>
-	<br>
+	<p>
+  		<%= f.label :Tags %><br />
+  		<%= f.text_field :tag_list %>
+	</p>
 
 	<%= f.submit %>
 

@@ -46,7 +46,7 @@ class ForumsController < ApplicationController
 	private
 
 	def forum_params
-		params.require(:forum).permit(:title, :content, :slug)
+		params.require(:forum).permit(:title, :content, :slug, :tag_list)
 	end
 
 	def find_forum

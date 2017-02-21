@@ -7,6 +7,14 @@
 	<p align="right"><%= link_to  'Next', @next_forum %></p><br>
 <% end %>
 
+<p>
+  Tags:
+  <% @forum.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
+
+
 <%= @forum.content.html_safe %><br>
 
 <br> <br>
