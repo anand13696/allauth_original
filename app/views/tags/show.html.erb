@@ -1,35 +1,42 @@
-<h1>Articles Tagged with <%= @tag.name %></h1>
+<div class="row">
+  <div class="col-md-4 col-md-offset-1">
+    <h3>Articles Tagged with <%= @tag.name %></h3>
+    <% if @tag.posts.count != 0 %>
+      <% @tag.posts.each do |post| %>
+        <h4><%= link_to post.title, post_path(post) %></h4>
+      <% end %>
+    <% else %>
+      <h4> No Posts exist with this tag </h4>
+    <% end %>
 
-<p align="left">
-<ul>
-  <% @tag.posts.each do |post| %>
-    <li><%= link_to post.title, post_path(post) %></li>
-  <% end %>
+    <hr>
+    <h3>Forum Tagged with <%= @tag.name %></h3>
+    <% if @tag.forums.count != 0 %>
+      <% @tag.forums.each do |forum| %>
+        <h4><%= link_to forum.title, forum_path(forum) %></h4>
+      <% end %>
+    <% else %>
+      <h4> No forum exist with this tag </h4>
+    <% end %>
+  </div> 
 
-  <h1>Forum Tagged with <%= @tag.name %></h1>
-  <% @tag.forums.each do |forum| %>
-    <li><%= link_to forum.title, forum_path(forum) %></li>
-  <% end %>
+  <div class="col-md-4 col-md-offset-2">
+    <h3> Number of posts with all tags </h3>
+    <% Tag.all.each do |tag| %>
+    	<% if tag.posts.count  > 0 %>
+    		<h4><%= link_to tag.name, tag_path(tag) %><span class="badge"><%= tag.posts.count %></span></h4>
+    		<% end %>
+    <% end %>
 
-</ul>
-</p>
-
-<ul>
-  <h1> Number of posts with all tags </h1>
-  <% Tag.all.each do |tag| %>
-  	<% if tag.posts.count  > 0 %>
-  		<li><%= link_to tag.name, tag_path(tag) %><span class="badge"><%= tag.posts.count %></span></li>
-  		<% end %>
-  <% end %>
-
-  <h1> Number of forums with all tags </h1>
-  <% Tag.all.each do |tag| %>
-  	<% if tag.forums.count  > 0 %>
-  	<li><%= link_to tag.name, tag_path(tag) %><span class="badge"><%= tag.forums.count %></span></li>
-  	<% end %>
-  <% end %>
-
-</ul>
+    <hr>
+    <h3> Number of forums with all tags </h3>
+    <% Tag.all.each do |tag| %>
+    	<% if tag.forums.count  > 0 %>
+  	   <h4><%= link_to tag.name, tag_path(tag) %><span class="badge"><%= tag.forums.count %></span></h4>
+  	   <% end %>
+    <% end %>
+  </div>
+</div>
 
 
 

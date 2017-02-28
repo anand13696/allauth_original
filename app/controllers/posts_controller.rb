@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	before_action :find_post, only: [:show, :edit, :update, :destroy]
+	impressionist actions: [:show]
 
 	def index
 		if params[:search]
@@ -44,6 +45,14 @@ class PostsController < ApplicationController
 	def destroy
 		@post.destroy
 		redirect_to posts_path
+	end
+
+	def upvote 
+  		@post = Post.friendly.find(params[:id])
+  		if @post.upvote_by current_user
+  			@post.cached_votes_up += 1
+  		end
+  		redirect_to :back
 	end
 
 	private

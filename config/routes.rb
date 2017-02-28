@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
   resources :tags
 
+  resources :posts do 
+  member do
+    put "like", to: "posts#upvote"
+  end
+end
+
 end
