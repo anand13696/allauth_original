@@ -9,17 +9,17 @@
 	<% end %>
 
 	<p>
-	<%= f.label :title %><br>
+	<%= f.label :content, "Title of the Question:" %><br>
 	<%= f.text_field :title %>
 	</p>
 
 	<p>
-	<%= f.label :content, "Write your article here" %><br>
+	<%= f.label :content, "Explaination of the Question:" %><br>
 	<%= f.cktext_area :content %>
 	</p>
 
 	<p>
-  		<%= f.label :Tags %><br />
+  		<%= f.label :content, "Tags(comma seperated):" %><br />
   		<%= f.text_field :tag_list %>
 	</p>
 

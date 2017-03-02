@@ -25,12 +25,14 @@
   <div class="col-md-4 ">
   	<h3>Most Upvoted forums</h3>
   		<% Forum.order('cached_votes_up DESC').each do |forum|%>
-  			<h4><%= link_to forum.title, forum %> || <%= forum.cached_votes_up%><h4>
+  			<h4><%= link_to forum.title, forum %> <span class="badge"><%= forum.cached_votes_up%></span><h4>
   		<% end %>
   		<hr>
   	<h3>Most Popular Tags</h3>
   	<% Tag.order('forums_count DESC').each do |tag|%>
-  		<h4><%= link_to tag.name, tag_path(tag) %> || <%= tag.forums_count %></h4>
+    <% if tag.forums_count > 0 %>
+  		<h4><%= link_to tag.name, tag_path(tag) %> <span class="badge"><%= tag.forums_count %></span></h4>
+      <% end %>
   	<% end %>
   </div>
 </div>

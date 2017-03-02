@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228164432) do
+ActiveRecord::Schema.define(version: 20170228184157) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -28,10 +28,11 @@ ActiveRecord::Schema.define(version: 20170228164432) do
   create_table "forums", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "slug"
     t.integer  "user_id"
+    t.integer  "cached_votes_up", default: 0
     t.index ["slug"], name: "index_forums_on_slug", unique: true
   end
 
@@ -97,9 +98,10 @@ ActiveRecord::Schema.define(version: 20170228164432) do
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "posts_count", default: 0, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "posts_count",  default: 0, null: false
+    t.integer  "forums_count", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|

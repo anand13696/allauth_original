@@ -43,8 +43,20 @@ class ForumsController < ApplicationController
 	end
 
 	def destroy
+		@forum.tags.each do |tag|
+			tag.forums_count -= 1;
+			tag.save!
+		end
 		@forum.destroy
 		redirect_to forums_path
+	end
+
+	def upvote 
+  		@forum = Forum.friendly.find(params[:id])
+  		if @forum.upvote_by current_user
+  			@forum.cached_votes_up += 1
+  		end
+  		redirect_to :back
 	end
 
 	private

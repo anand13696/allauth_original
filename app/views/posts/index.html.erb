@@ -5,9 +5,12 @@
 		<%= submit_tag "Search" %>
 		<% end %>
 	</div>
+  <% if can? :manage, @post %>
 	<div class="col-md-3 col-md-offset-1">
 		<p align="right"> <%= link_to "New Blog", new_post_path %> </p>
 	</div>
+  <% end %>
+  
 </div>
 <hr>
 
@@ -23,15 +26,17 @@
 	<%= will_paginate @posts %>
   </div>
   <div class="col-md-4 ">
-  	<h3>Most Upvoted posts</h3>
+  	<h3>Most Upvoted Posts</h3>
   		<% Post.order('cached_votes_up DESC').each do |post|%>
-  			<h4><%= link_to post.title, post %> || <%= post.cached_votes_up%><h4>
+  			<h4><%= link_to post.title, post %> <span class="badge"><%= post.cached_votes_up%></span><h4>
   		<% end %>
   		<hr>
   	<h3>Most Popular Tags</h3>
-  	<% Tag.order('posts_count DESC').each do |tag|%>
-  		<h4><%= link_to tag.name, tag_path(tag) %> || <%= tag.posts_count %></h4>
-  	<% end %>
+    <% Tag.order('posts_count DESC').each do |tag|%>
+    <% if tag.posts_count > 0 %>
+      <h4><%= link_to tag.name, tag_path(tag) %> <span class="badge"><%= tag.posts_count %></span></h4>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
 	before_action :find_post, only: [:show, :edit, :update, :destroy]
-	impressionist actions: [:show]
 
 	def index
 		if params[:search]
@@ -43,6 +42,10 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
+		@post.tags.each do |tag|
+			tag.posts_count -= 1;
+			tag.save!
+		end
 		@post.destroy
 		redirect_to posts_path
 	end

@@ -17,4 +17,10 @@ Rails.application.routes.draw do
   end
 end
 
+resources :forums do 
+  member do
+    put "like", to: "forums#upvote"
+  end
+end
+
 end
