@@ -10,16 +10,20 @@ class Ability
         if user.superadmin_role?
             can :manage, :all
             can :access, :rails_admin
+            can :dashboard
         end
 
         if user.supervisor_role?
-            can :manage, Post
-            can :manage, Forum
+            can :read, Post
+            can [:update, :destroy], Post, :user_id => user.id
+            can :read, Forum
+            can [:update, :destroy], Forum, :user_id => user.id
         end
 
         if user.user_role?
             can :read, Post
-            can :manage, Forum
+            can :read, Forum
+            can [:update, :destroy], Forum, :user_id => user.id
         end
         # if user.supervisor_role || user.user_role?
         #     can :manage, Post 

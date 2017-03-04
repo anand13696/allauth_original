@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require select2
 //= require ckeditor/init
 //= require toastr
 //= require_tree .

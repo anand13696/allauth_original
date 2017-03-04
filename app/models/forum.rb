@@ -3,7 +3,7 @@ class Forum < ApplicationRecord
 	has_many :tags, through: :taggings 
 	belongs_to :user
 	acts_as_votable
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
 	# for fiendly-id
 	extend FriendlyId

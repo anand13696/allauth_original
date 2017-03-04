@@ -3,7 +3,7 @@
     <h3>Articles Tagged with <%= @tag.name %></h3>
     <% if @tag.posts.count != 0 %>
       <% @tag.posts.each do |post| %>
-        <h4><%= link_to post.title, post_path(post) %></h4>
+        <h4><%= link_to post.title, post_path(post) %></h4><hr>
       <% end %>
     <% else %>
       <h4> No Posts exist with this tag </h4>
@@ -13,7 +13,7 @@
     <h3>Forum Tagged with <%= @tag.name %></h3>
     <% if @tag.forums.count != 0 %>
       <% @tag.forums.each do |forum| %>
-        <h4><%= link_to forum.title, forum_path(forum) %></h4>
+        <h4><%= link_to forum.title, forum_path(forum) %></h4><hr>
       <% end %>
     <% else %>
       <h4> No forum exist with this tag </h4>

@@ -17,8 +17,8 @@
   	<% @forums.each do |forum| %>
 			<h3><%= link_to forum.title, forum %></h3>
 			<p class="date">asked <%= forum.created_at.strftime("%b %d '%y at %H:%M") %></p>
-			<p><%= forum.get_upvotes.size %> upvotes</p>
-      <p><%= forum.comments.count %> answers</p>
+			<p><%= forum.get_upvotes.size %> upvotes &nbsp; &nbsp; &nbsp;<%= forum.comments.count %> answers</p>
+      <hr>
 	<% end %>
 
 	<%= will_paginate @forums %>
@@ -29,7 +29,7 @@
   			<h4><%= link_to forum.title, forum %> <span class="badge"><%= forum.cached_votes_up%></span><h4>
   		<% end %>
   		<hr>
-  	<h3>Most Popular Tags</h3>
+  	<h3>Tags</h3>
   	<% Tag.order('name DESC').each do |tag|%>
     <% if tag.forums.count > 0 %>
   		<h4><%= link_to tag.name, tag_path(tag) %> <span class="badge"><%= tag.forums.count %></span></h4>

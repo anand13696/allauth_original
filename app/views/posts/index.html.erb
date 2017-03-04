@@ -16,12 +16,13 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-1">
-  <h3>Recent Blog Posts</h3>
-  	<% @posts.each do |post| %>
-			<h3><%= link_to post.title, post %></h3>
-			<p class="date"><%= post.created_at.strftime("%A, %b %d") %></p>
-			<p><%= post.get_upvotes.size %> upvotes</p>
-	<% end %>
+  <h3>Recent Blogs</h3>
+    <% @posts.each do |post| %>
+      <h3><%= link_to post.title, post %></h3>
+      <p class="date">asked <%= post.created_at.strftime("%b %d '%y at %H:%M") %></p>
+      <p><%= post.get_upvotes.size %> upvotes </p>
+      <hr>
+  <% end %>
 
 	<%= will_paginate @posts %>
   </div>
@@ -31,7 +32,7 @@
   			<h4><%= link_to post.title, post %> <span class="badge"><%= post.cached_votes_up%></span><h4>
   		<% end %>
   		<hr>
-  	<h3>Most Popular Tags</h3>
+  	<h3>Tags</h3>
     <% Tag.order('name DESC').each do |tag|%>
     <% if tag.posts.count > 0 %>
       <h4><%= link_to tag.name, tag_path(tag) %> <span class="badge"><%= tag.posts.count %></span></h4>
