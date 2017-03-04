@@ -16,7 +16,7 @@ class ForumsController < ApplicationController
 
 	def create
 		@forum = Forum.new forum_params
-		@forum.user_id = current_user.id
+		# @forum.user_id = current_user.id
 		if @forum.save
 			redirect_to @forum, notice: "Forum created"
 		else
@@ -35,7 +35,19 @@ class ForumsController < ApplicationController
 	end
 
 	def update
+		alltag = @forum.tags
 		if @forum.update forum_params
+			alltag.each do |tag|
+				puts(tag)
+				tag.forums_count -= 1;
+				tag.save!
+			end
+
+			@forum.tags.each do |tag|
+				tag.forums_count += 1;
+				tag.save!
+			end
+
 			redirect_to @forum, notice: "Forum successfully updated!"
 		else
 			render 'edit'

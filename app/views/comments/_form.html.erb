@@ -1,0 +1,5 @@
+<%= form_for([@forum, @forum.comments.build]) do |f| %>
+	<%= f.cktext_area :comment %><br>
+	<br>
+	<%= f.submit "Post Your answer" %>
+<% end %>

@@ -16,8 +16,9 @@
   <h3>Recent Forums</h3>
   	<% @forums.each do |forum| %>
 			<h3><%= link_to forum.title, forum %></h3>
-			<p class="date"><%= forum.created_at.strftime("%A, %b %d") %></p>
+			<p class="date">asked <%= forum.created_at.strftime("%b %d '%y at %H:%M") %></p>
 			<p><%= forum.get_upvotes.size %> upvotes</p>
+      <p><%= forum.comments.count %> answers</p>
 	<% end %>
 
 	<%= will_paginate @forums %>

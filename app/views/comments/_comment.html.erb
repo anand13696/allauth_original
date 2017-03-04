@@ -1,0 +1,13 @@
+<div class="comment clearfix">
+	<div class="comment_content">
+		<p class="comment_body"><%= comment.comment.html_safe %></p>
+		<p class="comment_time" align="right">answered <%= comment.created_at.strftime("%b %d '%y at %H:%M") %></p>
+		<p class="comment_time" align="right"><%= image_tag(User.find(comment.user_id).avatar, size: '50x50') %> <strong><%= User.find(comment.user_id).name %></strong></p>
+	</div>
+
+	<p><%= link_to 'Delete', [comment.forum, comment],
+								  method: :delete,
+								  class: "button",
+								 	data: { confirm: 'Are you sure?' } %></p>
+								 	<hr>
+</div>

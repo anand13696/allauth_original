@@ -23,4 +23,8 @@ resources :forums do
   end
 end
 
+resources :forums do 
+  resources :comments
+end
+
 end
