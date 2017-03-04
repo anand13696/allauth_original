@@ -32,9 +32,9 @@
   		<% end %>
   		<hr>
   	<h3>Most Popular Tags</h3>
-    <% Tag.order('posts_count DESC').each do |tag|%>
-    <% if tag.posts_count > 0 %>
-      <h4><%= link_to tag.name, tag_path(tag) %> <span class="badge"><%= tag.posts_count %></span></h4>
+    <% Tag.order('name DESC').each do |tag|%>
+    <% if tag.posts.count > 0 %>
+      <h4><%= link_to tag.name, tag_path(tag) %> <span class="badge"><%= tag.posts.count %></span></h4>
       <% end %>
     <% end %>
   </div>

@@ -58,6 +58,14 @@ class PostsController < ApplicationController
   		redirect_to :back
 	end
 
+	def downvote 
+  		@post = Post.friendly.find(params[:id])
+  		if @post.downvote_by current_user
+  			@post.cached_votes_up -= 1
+  		end
+  		redirect_to :back
+	end
+
 	private
 
 	def post_params

@@ -30,9 +30,9 @@
   		<% end %>
   		<hr>
   	<h3>Most Popular Tags</h3>
-  	<% Tag.order('forums_count DESC').each do |tag|%>
-    <% if tag.forums_count > 0 %>
-  		<h4><%= link_to tag.name, tag_path(tag) %> <span class="badge"><%= tag.forums_count %></span></h4>
+  	<% Tag.order('name DESC').each do |tag|%>
+    <% if tag.forums.count > 0 %>
+  		<h4><%= link_to tag.name, tag_path(tag) %> <span class="badge"><%= tag.forums.count %></span></h4>
       <% end %>
   	<% end %>
   </div>

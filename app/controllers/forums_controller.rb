@@ -71,6 +71,14 @@ class ForumsController < ApplicationController
   		redirect_to :back
 	end
 
+	def downvote 
+  		@forum = Forum.friendly.find(params[:id])
+  		if @forum.downvote_by current_user
+  			@forum.cached_votes_up -= 1
+  		end
+  		redirect_to :back
+	end
+
 	private
 
 	def forum_params
