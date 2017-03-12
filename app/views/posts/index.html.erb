@@ -5,11 +5,11 @@
 		<%= submit_tag "Search" %>
 		<% end %>
 	</div>
-  <% if can? :manage, @post %>
+  <%# if can? :manage, @post %>
 	<div class="col-md-3 col-md-offset-1">
 		<p align="right"> <%= link_to "New Blog", new_post_path %> </p>
 	</div>
-  <% end %>
+  <%# end %>
   
 </div>
 <hr>
